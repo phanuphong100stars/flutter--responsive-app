@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_app/layouts/mobile/desktop_layout.dart';
+import 'package:responsive_app/layouts/mobile/mobile_layout.dart';
+import 'package:responsive_app/layouts/mobile/tablet_layout.dart';
 
 void main() {
   runApp(const MyApp());
@@ -37,21 +40,27 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    const int mobileScreenSize = 768;
+    const int tabletScreenSize = 976;
+    // const int desktopScreenSize = 976;
+
+    // final currentWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-          ],
+        appBar: AppBar(
+          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          title: Text(widget.title),
         ),
-      ),
-    );
+        body: LayoutBuilder(builder: (context, constraints) {
+          if (constraints.maxWidth <= mobileScreenSize) {
+            return const MobileLayout();
+          }
+
+          if (constraints.maxWidth <= tabletScreenSize) {
+            return const TabletLayout();
+          }
+
+          return const DesktopLayout();
+        }));
   }
 }
