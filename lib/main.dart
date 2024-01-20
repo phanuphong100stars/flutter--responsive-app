@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_app/layouts/mobile/desktop_layout.dart';
-import 'package:responsive_app/layouts/mobile/mobile_layout.dart';
-import 'package:responsive_app/layouts/mobile/tablet_layout.dart';
+import 'package:responsive_app/layouts/desktop_layout.dart';
+import 'package:responsive_app/layouts/mobile_layout.dart';
+import 'package:responsive_app/layouts/tablet_layout.dart';
 
 void main() {
   runApp(const MyApp());
@@ -42,9 +42,6 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     const int mobileScreenSize = 768;
     const int tabletScreenSize = 976;
-    // const int desktopScreenSize = 976;
-
-    // final currentWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
         appBar: AppBar(
